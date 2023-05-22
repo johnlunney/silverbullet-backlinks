@@ -1,11 +1,10 @@
 import { asset } from "$sb/plugos-syscall/mod.ts";
 import { clientStore, editor, index } from "$sb/silverbullet-syscall/mod.ts";
-import { showPanel } from "https://deno.land/x/silverbullet@0.1.2/plug-api/silverbullet-syscall/editor.ts";
 
 const BackLinksKey = "showBacklinks";
 
 export async function toggleBacklinks() {
-  const showingBacklinks = (await getBacklinkStatus());
+  const showingBacklinks = await getBacklinkStatus();
   await clientStore.set(BackLinksKey, !showingBacklinks);
   if (!showingBacklinks) {
     const name = await editor.getCurrentPage();
@@ -69,7 +68,7 @@ async function showBacklinks(page: string) {
     const content = linksResult.length === 0
       ? "No links found"
       : formatResults(linksResult);
-    await showPanel(
+    await editor.showPanel(
       "lhs",
       0.5,
       `<html><head><style>${css}</style></head><body>
