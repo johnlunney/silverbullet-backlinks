@@ -89,9 +89,9 @@ async function getBacklinkStatus(): Promise<boolean> {
 
 // Query for backlinks for a page
 async function getBacklinks(name: string) {
-  const allBackLinksInfo = await index.queryPrefix(`pl:${name}:`);
+  const allBackLinksInfo = await index.queryPrefix(`l:${name}:`);
   const allBackLinks = allBackLinksInfo.map(({ page, key }) => {
-    const [, , pos] = key.split(":"); // Key: pl:page:pos
+    const [, , pos] = key.split(":"); // Key: l:page:pos
     return `${page}@${pos}`;
   });
   return allBackLinks;
