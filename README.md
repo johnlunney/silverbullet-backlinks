@@ -1,6 +1,6 @@
 # SilverBullet plug for Backlinks
 
-Provides access to pages that link to the one currently being edited.
+Provides access to pages that link to the one currently being edited ("linked mentions").
 
 ## Wait, SilverBullet?
 
